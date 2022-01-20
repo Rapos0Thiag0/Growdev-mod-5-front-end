@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto Final Módulo 5</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Links do CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid h-100">
+      <div
+        style="height: 100vh"
+        class="row justify-content-center bg-primary bg-gradient bg-opacity-10"
+      >
+        <div class="col-12 text-end me-2 pe-2">
+          <a
+            id="sair"
+            type="button"
+            class="mt-3 me-2 btn btn-outline-danger rounded-pill"
+            onclick="logout()"
+          >
+            SAIR
+          </a>
+        </div>
+
+        <div class="col-9 justify-content-center card shadow-lg rounded-3">
+          <div class="row text-center p-0 m-0">
+            <p class="fw-bold p-0 m-0">MENSAGENS</p>
+          </div>
+          <form
+            class="d-flex gap-2 mb-3 justify-content-center align-item-center text-center"
+          >
+            <input
+              type="text"
+              class="form-control-sm w-25"
+              id="descricaoRecados"
+              placeholder="Descrição"
+            />
+
+            <input
+              type="text"
+              class="form-control-sm w-50"
+              id="detalhamentoRecados"
+              placeholder="Detalhamento"
+            />
+
+            <button
+              id="botaoSalvarRecados"
+              type="button"
+              class="btn btn-success w-auto"
+            >
+              <p class="fw-bold m-0">SALVAR</p>
+            </button>
+            <button
+              id="botaoAtualizarRecados"
+              type="button"
+              class="btn btn-primary w-auto"
+            >
+              <p class="fw-bold m-0">ATUALIZAR</p>
+            </button>
+          </form>
+        </div>
+        <div
+          class="col-9 h-75 mb-2 m-2 p-auto card shadow-lg rounded-3 overflow-auto"
+        >
+          <table
+            id="tabelaMensagens"
+            class="table align-item-center text-center"
+          >
+            <thead>
+              <tr>
+                <th class="col-3">Descrição</th>
+                <th
+                  class="col-6 overflow-auto table-hover text-break text-wrap"
+                >
+                  Detalhamento
+                </th>
+                <th class="col-3">Ações</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/recados.js"></script>
+  </body>
+</html>
