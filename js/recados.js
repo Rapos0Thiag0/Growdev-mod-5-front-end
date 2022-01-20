@@ -1,6 +1,7 @@
 const url = "https://mod-5-be.herokuapp.com";
-// const urlDev = "http://localhost:8080";
+const urlDev = "http://localhost:8080";
 
+// função para pegar os valores dos parametros de nome e id.
 function getParameterByName(name, url = window.location.href) {
   name = name.replace(/[\[\]]/g, "\\$&");
   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
@@ -10,12 +11,16 @@ function getParameterByName(name, url = window.location.href) {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+// pega o parametro nome do usuário logado.
 const user = getParameterByName("nome");
 
+// pega o parametro id do usuário logado.
 const userUid = getParameterByName("uid");
 
+//busca as informações do usuário Logado no localStorage.
 const uidUserLogado = JSON.parse(localStorage.getItem("user_uid"));
 
+// evita que um usuário que não esteja logado acesse a pagina de outro usuário
 verificarLogado();
 
 async function verificarLogado() {
@@ -33,6 +38,7 @@ async function verificarLogado() {
     });
 }
 
+// função que carrega as informações na tabela.
 async function mostrarTabela() {
   await axios.get(`${url}/mensagens/${userUid}/all`).then((res) => {
     let msgs = res.data;

@@ -1,5 +1,5 @@
 const url = "https://mod-5-be.herokuapp.com";
-// const urlDev = "http://localhost:8080";
+const urlDev = "http://localhost:8080";
 
 async function login() {
   const usuario = document.querySelector("#usuarioNoLogin");
