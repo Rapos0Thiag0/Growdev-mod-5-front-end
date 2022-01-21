@@ -11,13 +11,10 @@ function getParameterByName(name, url = window.location.href) {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-// pega o parametro nome do usuário logado.
-const user = getParameterByName("nome");
-
 // pega o parametro id do usuário logado.
 const userUid = getParameterByName("uid");
 
-//busca as informações do usuário Logado no localStorage.
+// busca uid do usuário Logado no localStorage.
 const uidUserLogado = JSON.parse(localStorage.getItem("user_uid"));
 
 // evita que um usuário que não esteja logado acesse a pagina de outro usuário
@@ -73,6 +70,7 @@ async function mostrarTabela() {
   });
 }
 
+// função que deleta uma mensagem.
 async function apagarLinha(posicao) {
   let id = posicao;
 
@@ -84,6 +82,7 @@ async function apagarLinha(posicao) {
   }
 }
 
+// função seleciona o contúdo a ser editado.
 async function selecionaLinhaEditavel(posicao) {
   let id = posicao;
   await axios
@@ -100,6 +99,7 @@ async function selecionaLinhaEditavel(posicao) {
     });
 }
 
+// função que executa a edição do conteúdo.
 async function editar(posicao) {
   let id = posicao;
   const botaoAtualizar = document.querySelector("#botaoAtualizarRecados");
@@ -127,6 +127,7 @@ async function editar(posicao) {
   });
 }
 
+// função que adiciona novas mensagens.
 async function addMensagem(desc, det) {
   const descricaoNova = desc;
   const detalhamentoNovo = det;
@@ -156,11 +157,13 @@ botaoSalvar.addEventListener("click", () => {
   resetarInputs();
 });
 
+// função que apaga os campos de texto após adicionar ou editar um conteúdo.
 function resetarInputs() {
   document.querySelector("#descricaoRecados").value = "";
   document.querySelector("#detalhamentoRecados").value = "";
 }
 
+// função remove o uid do usuário Logado do localStorage.
 function logout() {
   localStorage.removeItem("user_uid");
   location.href = "index.html";

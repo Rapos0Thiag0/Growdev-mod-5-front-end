@@ -1,6 +1,7 @@
 const url = "https://mod-5-be.herokuapp.com";
 const urlDev = "http://localhost:8080";
 
+// função que executa a requisição de acesso à aplicação.
 async function login() {
   const usuario = document.querySelector("#usuarioNoLogin");
   const senha = document.querySelector("#senhaNoLogin");
@@ -29,6 +30,7 @@ async function login() {
       resetarInputs();
     });
 
+  // função que apaga os campos de texto após acionado o botaoEntrarLogin.
   function resetarInputs() {
     document.querySelector("#usuarioNoLogin").value = "";
     document.querySelector("#senhaNoLogin").value = "";
@@ -56,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// função salva o uid do usuário logado no localStorage.
 function setUidKey(userUid) {
   localStorage.setItem("user_uid", JSON.stringify(userUid));
 }

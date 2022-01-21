@@ -1,6 +1,7 @@
 const url = "https://mod-5-be.herokuapp.com";
 const urlDev = "http://localhost:8080";
 
+// Classe de usuário
 class User {
   constructor(nome, senha, senha2) {
     this.nome = nome;
@@ -9,6 +10,7 @@ class User {
   }
 }
 
+// função que cria um novo usuário no DB
 async function criaNovoUsuario(nome, senha, senha2) {
   const user = new User(nome, senha, senha2);
   await axios
@@ -34,6 +36,7 @@ async function criaNovoUsuario(nome, senha, senha2) {
     });
 }
 
+// função que apaga os campos de texto após acionado o botaoCriar.
 function resetarInputs() {
   document.querySelector("#usuarioNoNovaConta").value = "";
   document.querySelector("#senhaNoNovaConta").value = "";
