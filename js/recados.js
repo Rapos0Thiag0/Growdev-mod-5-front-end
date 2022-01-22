@@ -10,6 +10,8 @@ function getParameterByName(name, url = window.location.href) {
   if (!results[2]) return "";
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+const botaoAtualizar = document.querySelector("#botaoAtualizarRecados");
+botaoAtualizar.style.display = "none";
 
 // pega o parametro id do usuário logado.
 const userUid = getParameterByName("uid");
