@@ -85,6 +85,7 @@ async function apagarLinha(posicao) {
 // função seleciona o contúdo a ser editado.
 async function selecionaLinhaEditavel(posicao) {
   let id = posicao;
+
   await axios
     .get(`${url}/mensagens/${userUid}/${id}`)
     .then((res) => {
@@ -103,6 +104,10 @@ async function selecionaLinhaEditavel(posicao) {
 async function editar(posicao) {
   let id = posicao;
   const botaoAtualizar = document.querySelector("#botaoAtualizarRecados");
+  const botaoSalvar = document.querySelector("#botaoSalvarRecados");
+  botaoAtualizar.style.display = "block";
+  botaoSalvar.style.display = "none";
+  botaoSalvar.disabled = true;
 
   botaoAtualizar.addEventListener("click", async () => {
     const desNova = document.querySelector("#descricaoRecados").value;
@@ -119,6 +124,9 @@ async function editar(posicao) {
         .then(() => {
           resetarInputs();
           mostrarTabela();
+          botaoAtualizar.style.display = "none";
+          botaoSalvar.style.display = "block";
+          botaoSalvar.disabled = false;
         })
         .catch((err) => {
           console.log(err.response);
